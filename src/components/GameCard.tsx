@@ -14,8 +14,8 @@ const GameCard = ({game}: Props) => {
    
 
     <Card >
-        <Image src={ getCroppedImageUrl(game.background_image) }/>
-        <CardBody>
+        <Image height='200px' src={ getCroppedImageUrl(game.background_image) }/>
+        <CardBody minHeight='120px'>
             <Heading fontSize='2xl'>{game.name}</Heading>
             <HStack justifyContent='space-between'>
 
