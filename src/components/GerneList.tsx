@@ -12,7 +12,7 @@ const GenreList = ({onSelectedGenre, selectedGenre}: Props) => {
     const {data, isLoading, error} = useGenres();
     const skeleton = [1, 2, 3, 4, 5, 6,7,8,9,10,11,12];
     if(error) return null;
-    if(isLoading) return [<Box fontSize='2xl' marginBottom={10}/> ,...skeleton.map(ske => <GameListSkeleton key={ske}/>)];
+    if(isLoading) return [<Box fontSize='2xl' marginBottom={10} key='veryUniqueKey3987654'/> ,...skeleton.map(ske => <GameListSkeleton key={ske}/>)];
   return (
     <>
       <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
