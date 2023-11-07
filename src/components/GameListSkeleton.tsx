@@ -2,8 +2,8 @@ import { Box, HStack, Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/
 
 const GameListSkeleton = () => {
   return (
-    
-        <SkeletonText paddingY={3} noOfLines={1} skeletonHeight="5">
+        
+        <SkeletonText paddingY={2} noOfLines={1} skeletonHeight="6">
         </SkeletonText>
 
     

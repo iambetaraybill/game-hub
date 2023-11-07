@@ -1,4 +1,4 @@
-import { HStack, List, ListItem, Image, Text, Spinner, Button } from '@chakra-ui/react';
+import { HStack, List, ListItem, Image, Text, Spinner, Button, Heading, Box } from '@chakra-ui/react';
 import useGenres, { Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 import GameListSkeleton from './GameListSkeleton';
@@ -10,18 +10,21 @@ interface Props{
 
 const GenreList = ({onSelectedGenre, selectedGenre}: Props) => {
     const {data, isLoading, error} = useGenres();
-    const skeleton = [1, 2, 3, 4, 5, 6,7,8,9];
+    const skeleton = [1, 2, 3, 4, 5, 6,7,8,9,10,11,12];
     if(error) return null;
-    if(isLoading) return skeleton.map(ske => <GameListSkeleton key={ske}/>);
+    if(isLoading) return [<Box fontSize='2xl' marginBottom={10}/> ,...skeleton.map(ske => <GameListSkeleton key={ske}/>)];
   return (
-    <List>
-       {data.map(genre => <ListItem key={genre.id} paddingY='5px'>
-        <HStack>
-            <Image boxSize='32px' borderRadius={8} src={getCroppedImageUrl(genre.image_background)}/>
-            <Button fontWeight={genre.id === selectedGenre?.id ? 'extrabold' : 'normal'} onClick={() => onSelectedGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
-        </HStack>
-        </ListItem>)} 
-    </List>
+    <>
+      <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
+      <List>
+         {data.map(genre => <ListItem key={genre.id} paddingY='5px'>
+          <HStack>
+              <Image boxSize='32px' borderRadius={8} objectFit='cover' src={getCroppedImageUrl(genre.image_background)}/>
+              <Button whiteSpace={'normal'} textAlign='left' fontWeight={genre.id === selectedGenre?.id ? 'extrabold' : 'normal'} onClick={() => onSelectedGenre(genre)} fontSize='lg' variant='link'>{genre.name}</Button>
+          </HStack>
+          </ListItem>)}
+      </List>
+    </>
   )
 }
 
